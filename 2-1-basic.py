@@ -11,12 +11,12 @@ async def hello(i):
 
 # build main and build 2 tasks.
 async def main():
+    # wrap the coro into a task and schedule its execution. Return the Task object.
     task1 = asyncio.create_task(hello(1)) # returns immediately,  the task is created
     #await asyncio.sleep(3)
     task2 = asyncio.create_task(hello(2))
-    # delay task1.
+    # delay task
     await task1
-    # delay task2.
     await task2
 
 if __name__ == '__main__':

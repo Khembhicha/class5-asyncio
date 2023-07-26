@@ -11,10 +11,11 @@ async def hello(i):
 
 # build main and build 2 tasks
 async def main():
+    # wrap the coro into a task and schedule its execution. Return the Task object.
     task1 = asyncio.create_task(hello(1))
     #await asyncio.sleep(3)
     task2 = asyncio.create_task(hello(2))
-    # Use gather to abbreviate. It's like to creating a list
+    # task2 doesn't do anything until the event is set from task1.
     await asyncio.gather(task1, task2)
 
 if __name__ == '__main__':
